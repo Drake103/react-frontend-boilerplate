@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    title!= title
+
+    link(rel='stylesheet', href='http://fonts.googleapis.com/icon?family=Material+Icons')
+    link(rel='stylesheet', type='text/css', href='/vendor/materialize/css/materialize.css')
+    link(rel='stylesheet', href='/assets/style.css')
+  body
+    #app-node!= html
+
+    script(source='/vendor/jquery/jquery.min.js')
+    script(source='/vendor/materialize/js/materialize.js')
+    script(src='/assets/script.js')
