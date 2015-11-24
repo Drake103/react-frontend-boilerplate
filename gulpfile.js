@@ -10,8 +10,6 @@ var gulp = require('gulp'),
     pkg = require('./package.json'),
     rename = require('gulp-rename');
 
-var port = 3000;
-
 // Static server
 gulp.task('browser-sync', function() {
   browserSync.init({
@@ -76,9 +74,7 @@ gulp.task('jade', function() {
 gulp.task('default', ['lint', 'js', 'stylus', 'jade']);
 
 gulp.task('serve', ['default', 'browser-sync'], function() {
-  gulp.watch('./src/js/**/*.js', ['scripts']);
-  gulp.watch('./src/sass/**/*.{sass,scss}', ['sass']);
-  gulp.watch('./template/**/*.jade', ['jade']);
-
-  gulp.watch('./public/**/*').on('change', browserSync.reload);
+  gulp.watch('./src/**/*.js', ['lint', 'js']).on('change', browserSync.reload);
+  gulp.watch('./stylesheets/**/*.styl', ['stylus']).on('change', browserSync.reload);
+  gulp.watch('./template/**/*.jade', ['jade']).on('change', browserSync.reload);
 });
